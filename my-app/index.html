@@ -24,6 +24,21 @@
           name: "Bob",
           age: 25,
         };
+        handleClick = (e) => {
+          console.log(e.target);
+          // arrow functions can use "this"
+          this.setState({
+            name: "Bobby",
+          });
+          console.log(this.state.name);
+        };
+        handleMouseOver(e) {
+          console.log(e.target, e.page);
+        }
+        handleCopy(e) {
+          console.log("Please dont copy bruhh");
+        }
+
         render() {
           return (
             <div className="app-content">
@@ -31,11 +46,19 @@
               <p>
                 My name is {this.state.name} and I am {this.state.age}
               </p>
+              <button onClick={this.handleClick}>Click Me!</button>
+              <button onMouseOver={this.handleMouseOver}>Hover Me!</button>
+              <p onCopy={this.handleCopy}>Hello and I am ReactJS</p>
+
+              <form>
+                <input type="text" obChange={}/>
+                <button type="submit">SUBMIT</button>
+              </form>
             </div>
           );
         }
       }
-      
+
       ReactDOM.render(<App />, document.getElementById("app"));
     </script>
   </body>
